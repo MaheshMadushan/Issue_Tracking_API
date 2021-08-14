@@ -18,5 +18,5 @@ Route::resource('Issues','App\Http\Controllers\IssuesController')->only([
 ]);
 
 Route::resource('Issues.comment','App\Http\Controllers\IssuesCommentController')->only([
-    'index', 'show'
+     'show'
 ]);
