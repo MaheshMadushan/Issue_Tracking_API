@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Models\Issue;
 use Illuminate\Http\Request;
+use \Validator;
 
 class IssuesCommentController extends Controller
 {
@@ -45,9 +46,22 @@ class IssuesCommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($issue_id,$commentid)
+    public function show($issue_id,$comment_id)
     {
-        return Comment::where("id",$commentid)->where("issue_id",$issue_id)->get();
+        $validator = Validator::make(
+            array(
+                'issue_id' => $issue_id,
+                'comment_id' => $comment_id,
+            ),
+            array(
+                'issue_id' => 'required|numeric',
+                'comment_id' => 'required|numeric'
+            )
+        );
+        if($validator->fails()){
+            return "Invalid parameters";
+        }
+        return Comment::where("id",$comment_id)->where("issue_id",$issue_id)->get();
     }
 
     /**

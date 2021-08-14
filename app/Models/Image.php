@@ -14,4 +14,9 @@ class Image extends Model
     public $primaryKey = 'id';
     // TimeStamps
     public $timestamps = true;
+
+    public function imageable()
+    {
+        return $this->morphTo();
+    }
 }

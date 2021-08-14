@@ -51,7 +51,9 @@ class IssuesController extends Controller
         $issue = new Issue();
         $data = $request->all();
         $issue->title = $data["title"];
-        $issue->body = $data["body"];$slug = Str::slug($data["title"]." ".$data["uuid"], '-');$issue->uuid = $data["uuid"];
+        $issue->body = $data["body"];
+        $slug = Str::slug($data["title"]." ".$data["uuid"], '-');
+        $issue->uuid = $data["uuid"];
         $issue->slug = $slug;
         $issue->save();
         return $slug." stored";

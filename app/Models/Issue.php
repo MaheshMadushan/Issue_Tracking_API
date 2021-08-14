@@ -18,13 +18,20 @@ class Issue extends Model
     public function comment(){
         return $this->hasMany("App\Models\Comment");
     }
+
     public function subCategories()
     {
         return $this->belongsToMany(Issue_subcategories::class);
     }
+
     public function categories()
     {
         return $this->belongsToMany(Issue_categories::class);
+    }
+
+    public function images()
+    {
+        return $this->morphMany('Image', 'imageable');
     }
 
 }

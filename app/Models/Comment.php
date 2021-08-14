@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
+
     protected $fillable = ['issue_id','body'];
     // table name
     protected $table = 'comments';
@@ -17,5 +18,10 @@ class Comment extends Model
 
     public function issue(){
         return $this->belongsTo("App\Models\Issue");
+    }
+
+    public function images()
+    {
+        return $this->morphMany('Image', 'imageable');
     }
 }

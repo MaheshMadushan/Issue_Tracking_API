@@ -20,3 +20,11 @@ Route::resource('Issues','App\Http\Controllers\IssuesController')->only([
 Route::resource('Issues.comment','App\Http\Controllers\IssuesCommentController')->only([
      'show'
 ]);
+
+Route::resource('Issues.image','App\Http\Controllers\IssuesImageController')->only([
+    'show'
+]);
+
+Route::resource('Issues.comment','App\Http\Controllers\CommentsImageController')->only([
+    'show'
+]);
