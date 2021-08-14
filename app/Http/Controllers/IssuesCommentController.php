@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Issue;
 use Illuminate\Http\Request;
 
@@ -44,9 +45,9 @@ class IssuesCommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($issue_id,$commentid)
     {
-        return Issue::where("id",$id)->with('comment')->get();
+        return Comment::where("id",$commentid)->where("issue_id",$issue_id)->get();
     }
 
     /**
